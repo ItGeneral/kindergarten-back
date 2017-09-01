@@ -1,0 +1,35 @@
+<div class="back-system">
+  <div class="back-menu-top">
+    <img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="back-logo">
+    <div class="top-tips">
+      <div class="back-tips">
+        <i class="fa fa-bell-o fa-user"></i>
+        <span class="back-user-text">tips</span>
+      </div>
+      <div class="back-tips dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle fa-user"></i><span>张三</span></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#"><span>Login</span></a></li>
+          <li><a href="#"><span>reset password</span></a></li>
+          <li><a href="#"><span>Logout</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="back-menu-left">
+    <ul class="menu-ul">
+      <li>
+        <i class="fa fa-id-card-o fa-menu-li"></i>
+        <span class="menu-span"><a routerLink="/employee-manage" routerLinkActive="active">用户管理</a></span>
+      </li>
+      <li><a routerLink="/login" routerLinkActive="active">员工管理</a></li>
+      <li><a routerLink="/register" routerLinkActive="active">基础数据管理</a></li>
+      <li>相册管理</li>
+      <li>招生信息管理</li>
+      <li>招聘管理</li>
+    </ul>
+  </div>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

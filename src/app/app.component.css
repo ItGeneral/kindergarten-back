@@ -1,0 +1,75 @@
+.back-system{
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+}
+.back-menu-top{
+  top: 0px;
+  height:80px;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+}
+.back-menu-left{
+  left: 0px;
+  width: 200px;
+  height: calc(100% - 80px);
+  background-color: #252c35;
+  position: absolute;
+  top: 80px;
+}
+
+.back-logo{
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.top-tips{
+  float: right;
+}
+.fa-user{
+  font-size: 18px;
+  vertical-align: bottom;
+}
+.back-tips{
+  height: 80px;
+  padding-top: 30px;
+  width: 80px;
+  text-align: center;
+  float: left;
+}
+.back-tips:hover{
+  cursor: pointer;
+  background-color: #fafafa;
+}
+.back-tips:focus{
+  cursor: pointer;
+  background-color: #fafafa;
+}
+.back-tips a{
+  text-decoration: none;
+}
+.back-user-text{
+  padding-left: 3px;
+}
+.menu-ul li{
+  list-style-type: none;
+  padding: 20px 20px 0px 20px;
+  color: #AEB7C2;
+}
+.menu-ul li:hover{
+  color: #fff;
+  cursor: pointer;
+}
+.menu-ul li:focus{
+  color: #fff;
+  cursor: pointer;
+}
+.menu-ul li:first-child{
+  padding-top: 30px;
+}
+.fa-menu-li{
+  margin-left: -25px;
+  font-size: 16px;
+}
+.menu-span{
+  padding-left: 10px;
+}
