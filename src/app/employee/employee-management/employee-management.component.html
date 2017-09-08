@@ -1,6 +1,31 @@
 <div class="back-main-content">
-  <div class="table-responsive">
-    <table class="table table-hover employee-table">
+  <div class="search-query row">
+    <div class="search-input">
+      <div class="search-line">
+        <div class="search-title"><span>姓名：</span></div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="姓名">
+        </div>
+        <div class="search-title"><span>电话：</span></div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="电话">
+        </div>
+        <div class="search-title"><span>职称：</span></div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="职称">
+        </div>
+      </div>
+    </div>
+    <div class="search-button">
+      <button type="button" class="btn btn-primary">查 询</button>
+    </div>
+  </div>
+
+  <div class="table-responsive employee-table">
+    <div class="table-add">
+      <button type="button" class="btn btn-primary">新增</button>
+    </div>
+    <table class="table table-hover">
       <thead>
       <tr>
         <td>姓名</td>
@@ -11,6 +36,7 @@
         <td>年龄</td>
         <td>学位</td>
         <td>毕业院校</td>
+        <td>操作</td>
       </tr>
       </thead>
       <tbody>
@@ -23,6 +49,7 @@
         <td>26</td>
         <td>学士</td>
         <td>东华</td>
+        <td><a href="javascript:;">编辑</a></td>
       </tr>
       <tr>
         <td>张三</td>
@@ -33,28 +60,37 @@
         <td>26</td>
         <td>学士</td>
         <td>东华</td>
+        <td><a href="javascript:;">编辑</a></td>
       </tr>
       </tbody>
     </table>
+    <nav class="pagination-nav">
+      <ul class="pagination employee-page">
+        <li>
+          <a href="#" class="previous-a" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul class="pagination employee-page">
-      <li>
-        <a href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li>
-        <a href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+
+<div class="mask">
+  <div class="mask-content">
+
+  </div>
 </div>
+
+</div>
+
 
