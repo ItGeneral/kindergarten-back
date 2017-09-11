@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="search-button">
-      <button type="button" class="btn btn-primary">查 询</button>
+      <button type="button" class="btn btn-primary" (click)="search(1)">查 询</button>
     </div>
   </div>
 
@@ -33,55 +33,27 @@
         <td>邮箱</td>
         <td>职称</td>
         <td>生日</td>
-        <td>年龄</td>
         <td>学位</td>
         <td>毕业院校</td>
         <td>操作</td>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>张三</td>
-        <td>18801915767</td>
-        <td>799178171@qq.com</td>
-        <td>你猜猜看</td>
-        <td>1991-10</td>
-        <td>26</td>
-        <td>学士</td>
-        <td>东华</td>
-        <td><a href="javascript:;" data-toggle="modal" data-target="#editModal">编辑</a></td>
-      </tr>
-      <tr>
-        <td>张三</td>
-        <td>18801915767</td>
-        <td>799178171@qq.com</td>
-        <td>你猜猜看</td>
-        <td>1991-10</td>
-        <td>26</td>
-        <td>学士</td>
-        <td>东华</td>
-        <td><a href="javascript:;" data-toggle="modal" data-target="#editModal">编辑</a></td>
+      <tr *ngFor="let employee of employeeList">
+        <td>{{employee.employeeName}}</td>
+        <td>{{employee.employeePhone}}</td>
+        <td>{{employee.employeeEmail}}</td>
+        <td>{{employee.employeePosition}}</td>
+        <td>{{employee.employeeBirthday}}</td>
+        <td>{{employee.employeeDegree}}</td>
+        <td>{{employee.employeeEduSchool}}</td>
+        <td><a href="javascript:;" data-toggle="modal" data-target="#editModal" (click)="editEmployees(employee)">编辑</a></td>
       </tr>
       </tbody>
     </table>
+    <!-- 分页 -->
     <nav class="pagination-nav">
-      <ul class="pagination employee-page">
-        <li>
-          <a href="#" class="previous-a" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
+      <ul class="pagination employee-page"></ul>
     </nav>
   </div>
 
@@ -91,14 +63,41 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="addModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="addModalLabel">新增员工</h4>
         </div>
-        <div class="modal-body">
-          ...
+        <div class="modal-body form-inline">
+          <div class="form-group">
+            <label for="employeeName">姓名：</label>
+            <input type="text" class="form-control" id="employeeName" placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label for="employeePhone">联系电话：</label>
+            <input type="email" class="form-control" id="employeePhone" placeholder="18800001111">
+          </div>
+          <div class="form-group">
+            <label for="employeeEmail">邮箱：</label>
+            <input type="text" class="form-control" id="employeeEmail" placeholder="xx@xx.com">
+          </div>
+          <div class="form-group">
+            <label for="employeePosition">职称：</label>
+            <input type="email" class="form-control" id="employeePosition" placeholder="教授">
+          </div>
+          <div class="form-group">
+            <label for="employeeBirthday">生日：</label>
+            <input type="text" class="form-control" id="employeeBirthday" placeholder="1990-01-01">
+          </div>
+          <div class="form-group">
+            <label for="employeeEduSchool">毕业院校：</label>
+            <input type="email" class="form-control" id="employeeEduSchool" placeholder="北京大学">
+          </div>
+          <div class="form-group">
+            <label for="employeeDegree">学位：</label>
+            <input type="email" class="form-control" id="employeeDegree" placeholder="学士">
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary">保存</button>
         </div>
       </div>
     </div>
@@ -110,19 +109,45 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="editModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="editModalLabel">编辑员工信息</h4>
         </div>
-        <div class="modal-body">
-          ...
+        <div class="modal-body form-inline">
+          <div class="form-group">
+            <label for="EditEmployeeName">姓名：</label>
+            <input type="text" class="form-control" id="EditEmployeeName" placeholder="Jane Doe" [(ngModel)]="editEmployee.employeeName">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeePhone">联系电话：</label>
+            <input type="email" class="form-control" id="EditEmployeePhone" placeholder="18800001111" [(ngModel)]="editEmployee.employeePhone">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeeEmail">邮箱：</label>
+            <input type="text" class="form-control" id="EditEmployeeEmail" placeholder="xx@xx.com" [(ngModel)]="editEmployee.employeeEmail">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeePosition">职称：</label>
+            <input type="email" class="form-control" id="EditEmployeePosition" placeholder="教授" [(ngModel)]="editEmployee.employeePosition">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeeBirthday">生日：</label>
+            <input type="text" class="form-control" id="EditEmployeeBirthday" placeholder="1990-01-01" [(ngModel)]="editEmployee.employeeBirthday">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeeEduSchool">毕业院校：</label>
+            <input type="email" class="form-control" id="EditEmployeeEduSchool" placeholder="北京大学" [(ngModel)]="editEmployee.employeeEduSchool">
+          </div>
+          <div class="form-group">
+            <label for="EditEmployeeDegree">学位：</label>
+            <input type="email" class="form-control" id="EditEmployeeDegree" placeholder="学士" [(ngModel)]="editEmployee.employeeDegree">
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary">保存</button>
         </div>
       </div>
     </div>
   </div>
 
 </div>
-
 

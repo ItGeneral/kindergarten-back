@@ -4,11 +4,14 @@ import { EmployeeRegisterComponent } from './employee-register/employee-register
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 import {employeeRoute} from './employee.routing';
 import {EmployeeLoginComponent} from './employee-login/employee-login.component';
+import { FormsModule } from "@angular/forms";
+
 
 @NgModule({
   imports: [
     CommonModule,
-    employeeRoute
+    employeeRoute,
+    FormsModule
   ],
   declarations: [
     EmployeeLoginComponent,

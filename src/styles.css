@@ -21,8 +21,8 @@ html {
   top: 80px;
 }
 .pagination-nav{
-  float: right;
-  width: 300px;
+  text-align: right;
+  min-width: 500px;
 }
 .pagination li:first-child > a{
   border-radius: 6px 0 0 6px;
@@ -79,4 +79,13 @@ html {
 }
 .modal{
   top:20%;
+}
+.form-group label{
+  color: #0f0f0f;
+  font-weight: normal;
+  text-align: right;
+  min-width: 75px;
+}
+.form-group{
+  margin-right: 20px;
 }
