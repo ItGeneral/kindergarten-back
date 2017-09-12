@@ -4,15 +4,15 @@
       <div class="search-line">
         <div class="search-title"><span>姓名：</span></div>
         <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder="姓名">
+          <input type="text" class="form-control" placeholder="姓名" [(ngModel)]="searchEmployee.employeeName">
         </div>
         <div class="search-title"><span>电话：</span></div>
         <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder="电话">
+          <input type="text" class="form-control" placeholder="电话" [(ngModel)]="searchEmployee.employeePhone">
         </div>
         <div class="search-title"><span>职称：</span></div>
         <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder="职称">
+          <input type="text" class="form-control" placeholder="职称" [(ngModel)]="searchEmployee.employeePosition">
         </div>
       </div>
     </div>
@@ -29,24 +29,28 @@
       <thead>
       <tr>
         <td>姓名</td>
+        <td>状态</td>
         <td>联系电话</td>
         <td>邮箱</td>
         <td>职称</td>
         <td>生日</td>
         <td>学位</td>
         <td>毕业院校</td>
+        <td>入职时间</td>
         <td>操作</td>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let employee of employeeList">
+      <tr *ngFor='let employee of employeeList'>
         <td>{{employee.employeeName}}</td>
+        <td>{{employee.employeeStatus}}</td>
         <td>{{employee.employeePhone}}</td>
         <td>{{employee.employeeEmail}}</td>
         <td>{{employee.employeePosition}}</td>
         <td>{{employee.employeeBirthday}}</td>
         <td>{{employee.employeeDegree}}</td>
         <td>{{employee.employeeEduSchool}}</td>
+        <td>{{employee.employeeJoinDate}}</td>
         <td><a href="javascript:;" data-toggle="modal" data-target="#editModal" (click)="editEmployees(employee)">编辑</a></td>
       </tr>
       </tbody>
@@ -97,7 +101,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary">保存</button>
+          <button type="button" class="btn btn-primary" (click)="saveEmployee()">保存</button>
         </div>
       </div>
     </div>
@@ -143,7 +147,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary">保存</button>
+          <button type="button" class="btn btn-primary"  (click)="saveEmployee()">保存</button>
         </div>
       </div>
     </div>

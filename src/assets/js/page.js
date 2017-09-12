@@ -26,9 +26,9 @@ function loadPage(records, currentPage, eachPageCount){
   if(totalPageSize <= 10){
     for(var i = 1; i < totalPageSize + 1; i++){
       if(currentPage == i){
-        pageSizeHtml += '<li class="active"><a href="javascript:;" (click)="search(' + i + ')">' + i + '</a></li>';
+        pageSizeHtml += '<li class="active"><a href="javascript:;" onclick="search(' + i + ')">' + i + '</a></li>';
       }else{
-        pageSizeHtml += '<li><a href="javascript:;" (click)="search(' + i + ')">' + i + '</a></li>';
+        pageSizeHtml += '<li><a href="javascript:;" onclick="search(' + i + ')">' + i + '</a></li>';
       }
     }
   }else{
@@ -39,31 +39,36 @@ function loadPage(records, currentPage, eachPageCount){
       }
       for(var i = firstPageHtmlIndex; i < firstPageHtmlIndex + 10; i++){
         if(currentPage == i){
-          pageSizeHtml += '<li class="active"><a href="javascript:;" (click)="search(' + i + ')">' + i + '</a></li>';
+          pageSizeHtml += '<li class="active"><a href="javascript:;" onclick="search(' + i + ')">' + i + '</a></li>';
         }else{
-          pageSizeHtml += '<li><a href="javascript:;" page="'+i+'" (click)="search(' + i + ')">' + i + '</a></li>';
+          pageSizeHtml += '<li><a href="javascript:;" page="'+i+'" onclick="search(' + i + ')">' + i + '</a></li>';
         }
       }
     }else{
       for(var i = 1; i < 11; i++){
         if(currentPage == i){
-          pageSizeHtml += '<li class="active"><a href="javascript:;" (click)="search(' + i + ')">' + i + '</a></li>';
+          pageSizeHtml += '<li class="active"><a href="javascript:;" onclick="search(' + i + ')">' + i + '</a></li>';
         }else{
-          pageSizeHtml += '<li><a href="javascript:;"  (click)="search(' + i + ')">' + i + '</a></li>';
+          pageSizeHtml += '<li><a href="javascript:;"  onclick="search(' + i + ')">' + i + '</a></li>';
         }
       }
     }
   }
   //disabled上一页
-  var firstLi = "<li class='pagination-previous'><a href='javascript:;' aria-label='Previous' (click)='previousPage()'><span aria-hidden='true'>&laquo;</span> </a></li>";
+  var firstLi = "<li class='pagination-previous'><a href='javascript:;' aria-label='Previous' onclick='search(" + (currentPage - 1) + ")'><span aria-hidden='true'>&laquo;</span> </a></li>";
   if(currentPage == 1){
-    firstLi = "<li class='pagination-previous disabled'><a href='javascript:;' aria-label='Previous' (click)='previousPage()'><span aria-hidden='true'>&laquo;</span> </a></li>";
+    firstLi = "<li class='pagination-previous disabled'><a href='javascript:;' aria-label='Previous'><span aria-hidden='true'>&laquo;</span> </a></li>";
   }
   //disabled下一页
-  var lastLi = "<li class='pagination-next'><a href='javascript:;' aria-label='Next' (click)='nextPage()'><span aria-hidden='true'>&raquo;</span> </a></li>";
+  var lastLi = "<li class='pagination-next'><a href='javascript:;' aria-label='Next' onclick='search("+ (currentPage + 1) +")'><span aria-hidden='true'>&raquo;</span> </a></li>";
   if(currentPage == totalPageSize){
-    lastLi = "<li class='pagination-next disabled'><a href='javascript:;' aria-label='Next' (click)='nextPage()'><span aria-hidden='true'>&raquo;</span> </a></li>";
+    lastLi = "<li class='pagination-next disabled'><a href='javascript:;' aria-label='Next'><span aria-hidden='true'>&raquo;</span> </a></li>";
   }
   var pageHtml = firstLi + pageSizeHtml + lastLi;
   $(".pagination").empty().append(pageHtml);
+}
+//调用ts方法
+var searchTs = new AppModule.EmployeeModule.EmployeeManagementComponent();
+function search(currentPage) {
+  searchTs.search(currentPage);
 }
