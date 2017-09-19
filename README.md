@@ -75,3 +75,8 @@ npm install -g angular-cli@latest
 | Interface   | 	ng g interface my-new-interface |
 | Enum	     | ng g enum my-new-enum |
 | Module      |	ng g module my-module|
+
+## 分页
+1、npm i -S angular2-datatable  
+2、在Module中import DataTableModule 
+3、引入数据查看employee-management.component.html  

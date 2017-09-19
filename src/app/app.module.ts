@@ -6,6 +6,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import {appRouting} from './app.routing';
 import {EmployeeModule} from './employee/employee.module';
+import {DataTableModule} from 'angular2-datatable';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {EmployeeModule} from './employee/employee.module';
     FormsModule,
     appRouting,
     JsonpModule,
-    EmployeeModule
+    EmployeeModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

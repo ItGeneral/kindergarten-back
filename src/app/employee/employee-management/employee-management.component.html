@@ -55,10 +55,8 @@
       </tr>
       </tbody>
     </table>
-    <!-- 分页 -->
-    <nav class="pagination-nav">
-      <ul class="pagination employee-page"></ul>
-    </nav>
+    <app-pagination [totalPage]="totalPage" [currentPage]="currentPage" (changePage)="search($event)"></app-pagination>
+
   </div>
 
   <!-- 新增弹层 Modal -->

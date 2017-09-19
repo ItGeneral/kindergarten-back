@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import {Employee} from '../../util/model/employee-model';
 import {NgModel} from '@angular/forms';
 
-
 @Component({
   selector: 'app-employee-management',
   templateUrl: './employee-management.component.html',
@@ -19,12 +18,14 @@ export class EmployeeManagementComponent implements OnInit {
 
   private employeeList : Array<Employee>;
   /** 当前页码 */
-  private currentPage: number;
+  private currentPage: number = 1;
   private subject: Subject<any> = new Subject<any>();
   /** 编辑Employee对象 */
   private editEmployee: Employee = new Employee();
   /** 查询对象 */
   private searchEmployee: Employee = new Employee();
+
+  private totalPage: number = 0;
 
   ngOnInit() {
     this.employeeList = [{
@@ -37,7 +38,7 @@ export class EmployeeManagementComponent implements OnInit {
       'employeeBirthday': '1991-10-10',
       'employeeDegree': '硕士',
       'employeeEduSchool': '清华大学',
-      'employeeJoinDate': "2017-08-02"
+      'employeeJoinDate': '2017-08-02'
     },{
       'id':2,
       'employeeName': '李四',
@@ -48,7 +49,7 @@ export class EmployeeManagementComponent implements OnInit {
       'employeeBirthday': '1968-10-10',
       'employeeDegree': '博士',
       'employeeEduSchool': '清华大学',
-      'employeeJoinDate': "2017-08-03"
+      'employeeJoinDate': '2017-08-03'
     }];
     this.search(1);
   }
@@ -65,18 +66,17 @@ export class EmployeeManagementComponent implements OnInit {
         'employeePosition': this.searchEmployee.employeePosition
       }
     };
-    this.http.post("http://localhost:8080/queryEmployee", JSON.stringify(param), new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})}))
+    this.http.post('http://localhost:8080/queryEmployee', JSON.stringify(param), new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})}))
       .map(response => {
         let data = response.json();
-        if(data.status == "200"){
+        if(data.status == '200'){
           this.subject.next(Object.assign({},this.employeeList));
           this.currentPage = currentPage;
-          loadPage(this.employeeList.length, currentPage);
+          this.totalPage = this.employeeList.length/10;
         }else{
           //this.errMsg = data.message;
         }
       }).subscribe();
-    loadPage(50, currentPage);
   }
 
   public editEmployees(object:Employee): void{
@@ -84,19 +84,12 @@ export class EmployeeManagementComponent implements OnInit {
   }
 
 
-  public previousPage(): void{
-    this.search(this.currentPage - 1);
-  }
-
-  public nextPage(): void{
-    this.search(this.currentPage + 1);
-  }
   /** 保存信息*/
   public saveEmployee():void {
-    this.http.post("http://localhost:8080/saveEmployee", JSON.stringify(this.editEmployee), new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})}))
+    this.http.post('http://localhost:8080/saveEmployee', JSON.stringify(this.editEmployee), new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})}))
       .map(response => {
         let data = response.json();
-        if(data.status == "200"){
+        if(data.status == '200'){
           this.subject.next(Object.assign({},this.employeeList));
         }else{
           //this.errMsg = data.message;
@@ -105,6 +98,5 @@ export class EmployeeManagementComponent implements OnInit {
   }
 
 }
-/*调用js*/
-declare function loadPage(records:number, currentPage:number);
+
 

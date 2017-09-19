@@ -89,3 +89,7 @@ html {
 .form-group{
   margin-right: 20px;
 }
+.pagination{
+  width: 100%;
+  background-color: #fff;
+}
