@@ -1,0 +1,11 @@
+<nav class="pagination-nav">
+  <ul class="pagination employee-page">
+    <li class="pagination-previous disabled" *ngIf="currentPage == 1"><a href="javascript:;"  aria-label="Previous"><span aria-hidden="true">&laquo;</span> </a></li>
+    <li class="pagination-previous" *ngIf="currentPage != 1"><a href="javascript:;"  aria-label="Previous" (click)="changePageFunc(currentPage - 1)"><span aria-hidden="true">&laquo;</span> </a></li>
+    <li *ngFor="let pageNo of pageList" [ngClass]="{'active': currentPage == pageNo}">
+      <a href="javascript:;" (click)="changePageFunc(pageNo)">{{pageNo}}</a>
+    </li>
+    <li class="pagination-next disabled" *ngIf="currentPage == totalPage || totalPage == 1"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">&raquo;</span> </a></li>
+    <li class="pagination-next" *ngIf="totalPage != 1 && currentPage != totalPage"><a href="javascript:;" aria-label="Next" (click)="changePageFunc(currentPage + 1)"><span aria-hidden="true">&raquo;</span> </a></li>
+  </ul>
+</nav>
