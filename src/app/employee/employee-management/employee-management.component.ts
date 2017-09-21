@@ -25,7 +25,7 @@ export class EmployeeManagementComponent implements OnInit {
   /** 查询对象 */
   private searchEmployee: Employee = new Employee();
 
-  private totalPage: number = 0;
+  private totalPage: number = 2;
 
   ngOnInit() {
     this.employeeList = [{
@@ -95,6 +95,10 @@ export class EmployeeManagementComponent implements OnInit {
           //this.errMsg = data.message;
         }
       }).subscribe();
+  }
+
+  public addEmployees(): void{
+    this.editEmployee = new Employee();
   }
 
 }

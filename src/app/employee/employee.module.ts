@@ -5,22 +5,19 @@ import { EmployeeManagementComponent } from './employee-management/employee-mana
 import {employeeRoute} from './employee.routing';
 import {EmployeeLoginComponent} from './employee-login/employee-login.component';
 import { FormsModule } from "@angular/forms";
-import {DataTableModule} from 'angular2-datatable';
-import {PaginationComponent} from '../util/pagination/pagination.component';
-
+import {PaginationModule} from '../util/pagination/pagination.module';
 
 @NgModule({
   imports: [
     CommonModule,
     employeeRoute,
     FormsModule,
-    DataTableModule
+    PaginationModule
   ],
   declarations: [
     EmployeeLoginComponent,
     EmployeeRegisterComponent,
     EmployeeManagementComponent,
-    PaginationComponent
   ],
   providers:[]
 })

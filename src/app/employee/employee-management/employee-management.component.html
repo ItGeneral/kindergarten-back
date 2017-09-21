@@ -21,9 +21,9 @@
     </div>
   </div>
 
-  <div class="table-responsive employee-table">
+  <div class="table-responsive table-model">
     <div class="table-add">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">新增</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" (click)="addEmployees()">新增</button>
     </div>
     <table class="table table-hover">
       <thead>
@@ -56,7 +56,6 @@
       </tbody>
     </table>
     <app-pagination [totalPage]="totalPage" [currentPage]="currentPage" (changePage)="search($event)"></app-pagination>
-
   </div>
 
   <!-- 新增弹层 Modal -->
@@ -70,31 +69,31 @@
         <div class="modal-body form-inline">
           <div class="form-group">
             <label for="employeeName">姓名：</label>
-            <input type="text" class="form-control" id="employeeName" placeholder="Jane Doe">
+            <input type="text" class="form-control" id="employeeName" placeholder="Jane Doe" [(ngModel)]="editEmployee.employeeName">
           </div>
           <div class="form-group">
             <label for="employeePhone">联系电话：</label>
-            <input type="email" class="form-control" id="employeePhone" placeholder="18800001111">
+            <input type="email" class="form-control" id="employeePhone" placeholder="18800001111" [(ngModel)]="editEmployee.employeePhone">
           </div>
           <div class="form-group">
             <label for="employeeEmail">邮箱：</label>
-            <input type="text" class="form-control" id="employeeEmail" placeholder="xx@xx.com">
+            <input type="text" class="form-control" id="employeeEmail" placeholder="xx@xx.com" [(ngModel)]="editEmployee.employeeEmail">
           </div>
           <div class="form-group">
             <label for="employeePosition">职称：</label>
-            <input type="email" class="form-control" id="employeePosition" placeholder="教授">
+            <input type="email" class="form-control" id="employeePosition" placeholder="教授" [(ngModel)]="editEmployee.employeePosition">
           </div>
           <div class="form-group">
             <label for="employeeBirthday">生日：</label>
-            <input type="text" class="form-control" id="employeeBirthday" placeholder="1990-01-01">
+            <input type="text" class="form-control" id="employeeBirthday" placeholder="1990-01-01" [(ngModel)]="editEmployee.employeeBirthday">
           </div>
           <div class="form-group">
             <label for="employeeEduSchool">毕业院校：</label>
-            <input type="email" class="form-control" id="employeeEduSchool" placeholder="北京大学">
+            <input type="email" class="form-control" id="employeeEduSchool" placeholder="北京大学" [(ngModel)]="editEmployee.employeeEduSchool">
           </div>
           <div class="form-group">
             <label for="employeeDegree">学位：</label>
-            <input type="email" class="form-control" id="employeeDegree" placeholder="学士">
+            <input type="email" class="form-control" id="employeeDegree" placeholder="学士" [(ngModel)]="editEmployee.employeeDegree">
           </div>
         </div>
         <div class="modal-footer">

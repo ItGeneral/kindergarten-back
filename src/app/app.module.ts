@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {appRouting} from './app.routing';
 import {EmployeeModule} from './employee/employee.module';
-import {DataTableModule} from 'angular2-datatable';
+import {StudentModule} from './student/student.module';
+import {PaginationModule} from './util/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {DataTableModule} from 'angular2-datatable';
     appRouting,
     JsonpModule,
     EmployeeModule,
-    DataTableModule
+    StudentModule,
+    PaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

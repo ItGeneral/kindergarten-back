@@ -29,7 +29,7 @@ export class PaginationComponent implements OnInit {
         this.pageList.push(i);
       }
     }else{
-      if(this.currentPage > 6){
+      if(this.totalPage > 6){
         let firstPageHtmlIndex = this.currentPage - 5;
         if((this.currentPage + 4) > this.totalPage){
           firstPageHtmlIndex = this.totalPage - 9;
@@ -45,26 +45,12 @@ export class PaginationComponent implements OnInit {
     }
   }
 
-  public changePageFunc(pageNo: number):void{
-    if(pageNo != this.currentPage){
+  public changePageFunc(pageNo: number):void {
+    if (pageNo != this.currentPage) {
       this.changePage.emit(pageNo);
       this.currentPage = pageNo;
       this.pageList = [];
-      if(this.currentPage > 6){
-        let firstPage = this.currentPage - 5;
-        if((this.currentPage + 4) > this.totalPage){
-          firstPage = this.totalPage - 9;
-        }
-        for(let i = firstPage; i < firstPage + 10; i++){
-          this.pageList.push(i);
-        }
-      }else{
-        for(let i = 1; i < 11; i++){
-          this.pageList.push(i);
-        }
-      }
+      this.loadPage();
     }
   }
-
-
 }

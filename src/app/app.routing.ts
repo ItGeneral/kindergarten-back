@@ -13,7 +13,8 @@ import {AppComponent} from "./app.component";
 const appRoutes: Routes = [
   {path: '', redirectTo:'app', pathMatch:'full'},
   {path: 'app', component: AppComponent},
-  {path: 'employee', loadChildren: './employee/employee.module#EmployeeModule'}
+  {path: 'employee', loadChildren: './employee/employee.module#EmployeeModule'},
+  {path: 'student', loadChildren: './student/student.module#StudentModule'}
 ];
 
 export const appRouting:ModuleWithProviders  = RouterModule.forRoot(appRoutes);

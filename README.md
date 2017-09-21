@@ -76,7 +76,7 @@ npm install -g angular-cli@latest
 | Enum	     | ng g enum my-new-enum |
 | Module      |	ng g module my-module|
 
-## 分页
-1、npm i -S angular2-datatable  
-2、在Module中import DataTableModule 
-3、引入数据查看employee-management.component.html  
+
+## 开发过程中遇到的问题  
+1、数据分页： 新建一个`component`,使用`@input`将父组件的参数传到`PaginationComponent`中, 使用`@output`以及`EventEmitter`将子组件的参数广播给父组件，详细代码请参考`PaginationComponent`  
+2、一个公共组件(`PaginationComponent`)怎么被多个module同时调用：新建一个module(`PaginationModule`)，将该`PaginationComponent`添加到`PaginationModule`的`declarations`中，并`exports`导出`PaginationModule`，其他module再引入`PaginationModule`即可  

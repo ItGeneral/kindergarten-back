@@ -1,0 +1,168 @@
+<div class="back-main-content">
+  <div class="search-query row">
+    <div class="search-input">
+      <div class="search-line">
+        <div class="search-title"><span>学生姓名：</span></div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="姓名" [(ngModel)]="searchStudent.studentName">
+        </div>
+        <div class="search-title"><span>联系方式：</span></div>
+        <div class="col-xs-2">
+          <input type="text" class="form-control" placeholder="电话" [(ngModel)]="searchStudent.studentPhone">
+        </div>
+      </div>
+    </div>
+    <div class="search-button">
+      <button type="button" class="btn btn-primary" (click)="search(1)">查 询</button>
+    </div>
+  </div>
+
+  <div class="table-responsive table-model">
+    <div class="table-add">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" (click)="addStudentFunc()">新增</button>
+    </div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>年级</td>
+        <td>班级</td>
+        <td>学费</td>
+        <td>性别</td>
+        <td>生日</td>
+        <td>联系电话</td>
+        <td>邮箱</td>
+        <td>入学时间</td>
+        <td>操作</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let student of studentList'>
+        <td>{{student.studentNo}}</td>
+        <td>{{student.studentName}}</td>
+        <td>{{student.studentGrade}}</td>
+        <td>{{student.studentClass}}</td>
+        <td>{{student.studentTuition}}</td>
+        <td>{{student.studentGender}}</td>
+        <td>{{student.studentBirthday}}</td>
+        <td>{{student.studentPhone}}</td>
+        <td>{{student.studentEmail}}</td>
+        <td>{{student.studentJoinTime}}</td>
+        <td><a href="javascript:;" data-toggle="modal" data-target="#editModal" (click)="editStudentFunc(student)">编辑</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <app-pagination [totalPage]="totalPage" [currentPage]="currentPage" (changePage)="search($event)"></app-pagination>
+  </div>
+
+  <!-- 新增弹层 Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addModalLabel">新增学生</h4>
+        </div>
+        <div class="modal-body form-inline">
+          <div class="form-group">
+            <label for="studentNo">学号：</label>
+            <input type="text" class="form-control" id="studentNo" placeholder="Jane Doe" [(ngModel)]="editStudent.studentNo">
+          </div>
+          <div class="form-group">
+            <label for="studentName">姓名：</label>
+            <input type="text" class="form-control" id="studentName" placeholder="Jane Doe" [(ngModel)]="editStudent.studentName">
+          </div>
+          <div class="form-group">
+            <label for="studentGrade">年级：</label>
+            <input type="text" class="form-control" id="studentGrade" placeholder="一年级" [(ngModel)]="editStudent.studentGrade">
+          </div>
+          <div class="form-group">
+            <label for="studentClass">班级：</label>
+            <input type="text" class="form-control" id="studentClass" placeholder="1班" [(ngModel)]="editStudent.studentClass">
+          </div>
+          <div class="form-group">
+            <label for="studentTuition">学费：</label>
+            <input type="email" class="form-control" id="studentTuition" placeholder="3200" [(ngModel)]="editStudent.studentTuition">
+          </div>
+          <div class="form-group">
+            <label for="studentGender">性别：</label>
+            <input type="text" class="form-control" id="studentGender" placeholder="男" [(ngModel)]="editStudent.studentGender">
+          </div>
+          <div class="form-group">
+            <label for="studentBirthday">生日：</label>
+            <input type="email" class="form-control" id="studentBirthday" placeholder="1991-10-20" [(ngModel)]="editStudent.studentBirthday">
+          </div>
+          <div class="form-group">
+            <label for="studentPhone">联系电话：</label>
+            <input type="email" class="form-control" id="studentPhone" placeholder="18800001111" [(ngModel)]="editStudent.studentPhone">
+          </div>
+          <div class="form-group">
+            <label for="studentJoinTime">入学时间：</label>
+            <input type="email" class="form-control" id="studentJoinTime" placeholder="2017-10-10" [(ngModel)]="editStudent.studentJoinTime">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary" (click)="saveStudent()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 编辑弹层 Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="editModalLabel">编辑员工信息</h4>
+        </div>
+        <div class="modal-body form-inline">
+          <div class="form-group">
+            <label for="editStudentNo">学号：</label>
+            <input type="text" class="form-control" id="editStudentNo" placeholder="Jane Doe" [(ngModel)]="editStudent.studentNo">
+          </div>
+          <div class="form-group">
+            <label for="editStudentName">姓名：</label>
+            <input type="text" class="form-control" id="editStudentName" placeholder="Jane Doe" [(ngModel)]="editStudent.studentName">
+          </div>
+          <div class="form-group">
+            <label for="editStudentGrade">年级：</label>
+            <input type="text" class="form-control" id="editStudentGrade" placeholder="一年级" [(ngModel)]="editStudent.studentGrade">
+          </div>
+          <div class="form-group">
+            <label for="editStudentClass">班级：</label>
+            <input type="text" class="form-control" id="editStudentClass" placeholder="1班" [(ngModel)]="editStudent.studentClass">
+          </div>
+          <div class="form-group">
+            <label for="editStudentTuition">学费：</label>
+            <input type="email" class="form-control" id="editStudentTuition" placeholder="3200" [(ngModel)]="editStudent.studentTuition">
+          </div>
+          <div class="form-group">
+            <label for="editStudentGender">性别：</label>
+            <input type="text" class="form-control" id="editStudentGender" placeholder="男" [(ngModel)]="editStudent.studentGender">
+          </div>
+          <div class="form-group">
+            <label for="editStudentBirthday">生日：</label>
+            <input type="email" class="form-control" id="editStudentBirthday" placeholder="1991-10-20" [(ngModel)]="editStudent.studentBirthday">
+          </div>
+          <div class="form-group">
+            <label for="editStudentPhone">联系电话：</label>
+            <input type="email" class="form-control" id="editStudentPhone" placeholder="18800001111" [(ngModel)]="editStudent.studentPhone">
+          </div>
+          <div class="form-group">
+            <label for="editStudentJoinTime">入学时间：</label>
+            <input type="email" class="form-control" id="editStudentJoinTime" placeholder="18800001111" [(ngModel)]="editStudent.studentJoinTime">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary"  (click)="saveStudent()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
