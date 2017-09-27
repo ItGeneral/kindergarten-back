@@ -1,3 +1,37 @@
-<div class="back-main-content">
-
+<div class="container register"><br/>
+  <div class="register-desc">{{sysBaseInfo.schoolIntroduction}}</div>
+  <div class="register-split"></div>
+  <div class="register-screen">
+    <form #form="ngForm" class="register-form" (ngSubmit)="register()">
+      <div class="kid-input-box">
+        <input type="text" class="register-input" name="userName" [(ngModel)]="user.userName" #userName="ngModel"
+               placeholder="Enter your userName" ng-maxlength="20" required />
+      </div>
+      <div class="kid-input-box">
+        <input type="password" class="register-input" [(ngModel)]="user.password" #password="ngModel"
+               name="password" placeholder="Password" ng-maxlength="20" required />
+      </div>
+      <div class="kid-input-box">
+        <input type="password" class="register-input" [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel"
+               name="confirmPassword" placeholder="Confirm password" ng-maxlength="20" required />
+      </div>
+      <div class="kid-input-box">
+        <input type="text" class="register-input" [(ngModel)]="user.realName" #realName="ngModel"
+               name="realName" placeholder="Enter your realName" ng-maxlength="20" />
+      </div>
+      <div class="kid-input-box">
+        <input type="text" class="register-input" [(ngModel)]="user.emailAddress" #emailAddress="ngModel"
+               name="emailAddress" placeholder="Enter your email address" ng-maxlength="20" />
+      </div>
+      <div class="kid-input-box">
+        <input type="text" class="register-input" [(ngModel)]="user.telPhone" #telPhone="ngModel"
+               name="telPhone" placeholder="Enter your telPhone" ng-maxlength="20" />
+      </div>
+      <div *ngIf="errMsg != null" class="error-tips">{{errMsg}}</div>
+      <div class="kid-btn-parent">
+        <button class="kid-btn-primary register-btn" id="btn-login" type="submit">Registering  now</button>
+      </div>
+    </form>
+  </div>
 </div>
+

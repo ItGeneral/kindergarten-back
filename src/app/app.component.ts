@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     public activatedRoute: ActivatedRoute
   ){}
 
-  private isShowLogin: boolean;
+  private showBar: boolean;
 
   private currentUser: User = new User();
 
@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
     /*获取当前登录对象*/
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.currentUser != null && this.currentUser.userName !== '' && this.currentUser.userName != null) {
-      this.isShowLogin = false;
+      this.showBar = true;
     }else {
-      this.isShowLogin = true;
+      this.showBar = false;
     }
   }
 

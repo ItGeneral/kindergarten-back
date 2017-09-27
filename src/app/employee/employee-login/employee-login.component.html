@@ -1,4 +1,30 @@
-<div class="back-main-content">
-  employee-login works!
+<div class="login-background">
+  <div class="login-content">
+    <div class="login-header">
+      <img src="assets/img/logo-dark.png">
+    </div>
+    <form>
+      <div class="kid-input-box">
+        <img class="login-img" src="assets/img/user.png">
+        <input type="text" class="login-input" name="userName" [(ngModel)]="user.userName" #userName="ngModel" placeholder="Please enter your userName" ng-maxlength="20" required >
+      </div>
+      <div class="kid-input-box">
+        <img class="login-img" src="assets/img/password.png">
+        <input type="password" class="login-input" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="Please enter your password" ng-maxlength="20" required>
+      </div>
+    </form>
+    <div class="remember-box">
+      <label>
+        <input type="checkbox" name="rememberMe" [(ngModel)]="user.rememberMe" #rememberMe="ngModel">
+        <span>Remember Me</span>
+      </label>
+    </div>
+    <div class="kid-btn-parent">
+      <button class="kid-btn-primary" (click)="login()">Login</button>
+    </div>
+    <div class="logon-box">
+      <a routerLink="/reset">Forgot?</a>
+      <a routerLink="/register">Register</a>
+    </div>
+  </div>
 </div>
-
