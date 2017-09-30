@@ -9,13 +9,13 @@
       <div class="back-tips dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-user-circle fa-user"></i>
-          <span class="pl5">张三</span>
+          <span class="pl5" *ngIf="currentUser != null && currentUser.userName != null && currentUser.userName != ''">{{currentUser.userName}}</span>
+          <span class="pl5" *ngIf="currentUser == null || currentUser.userName == null || currentUser.userName == ''">请登录</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#" routerLink="/login" routerLinkActive="active"><span>Login</span></a></li>
-          <li><a href="#" routerLink="/reset-password" routerLinkActive="active"><span>Reset Password</span></a></li>
-          <li><a href="#" routerLink="/logout" routerLinkActive="active"><span>Logout</span></a></li>
-          <li><a href="#" routerLink="/register" routerLinkActive="active"><span>Register</span></a></li>
+          <li><a href="#" routerLink="/login" routerLinkActive="active"><span>登 录</span></a></li>
+          <li><a href="#" routerLink="/reset-password" routerLinkActive="active"><span>重置密码</span></a></li>
+          <li (click)="logout()"><a href="javascript:;"><span>退 出</span></a></li>
         </ul>
       </div>
     </div>
@@ -34,6 +34,25 @@
     </ul>
   </div>
 </div>
-<div>
-  <router-outlet></router-outlet>
+<div class="main-contain">
+  <div class="back-main-content">
+    <ol class="breadcrumb">
+      <li class="active">首页</li>
+    </ol>
+    <div class="app-content">
+      <div class="app-left">
+          <div class="welcome">欢迎您 {{currentUser.userName}}</div>
+      </div>
+      <div class="app-right row">
+        <div class="col-xs-4">姓名：</div>
+        <div class="col-xs-4">电话：</div>
+        <div class="col-xs-4">职称：</div>
+        <div class="col-xs-4">邮箱：</div>
+        <div class="col-xs-4">毕业院校：</div>
+        <div class="col-xs-4">入职时间：</div>
+        <div class="col-xs-4">生日：</div>
+      </div>
+    </div>
+  </div>
 </div>
+<router-outlet></router-outlet>

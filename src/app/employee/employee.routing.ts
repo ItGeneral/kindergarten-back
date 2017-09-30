@@ -7,7 +7,6 @@
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from '@angular/router';
 import {EmployeeLoginComponent} from './employee-login/employee-login.component';
-import {EmployeeRegisterComponent} from './employee-register/employee-register.component';
 import {EmployeeManagementComponent} from './employee-management/employee-management.component';
 
 //loadChildren实现懒加载
@@ -15,7 +14,6 @@ import {EmployeeManagementComponent} from './employee-management/employee-manage
 const employeeRoutes: Routes = [
   {path: '', redirectTo:'employee-manage', pathMatch:'full'},
   {path: 'login', component: EmployeeLoginComponent},
-  {path: 'register', component: EmployeeRegisterComponent},
   {path: 'employee-manage', component: EmployeeManagementComponent}
 ];
 

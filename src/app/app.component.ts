@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
     console.log(routerStateSnapshot);
 
     this.judgeLogin();
-
+    this.currentUser = new User();
+    this.currentUser.userName = "张三";
   }
 
   public judgeLogin(): void {
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
 
   public logout(): void {
     localStorage.removeItem('currentUser');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/app');
   }
 
 
